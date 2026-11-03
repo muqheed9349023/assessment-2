@@ -192,12 +192,20 @@ def save_buffer(buffer: io.BytesIO, filepath: str) -> None:
 ################################################################################
 def clear_line() -> None:
   """Clears the current line."""
-  print(' ' * os.get_terminal_size().columns, end='\r')
+  try:
+    columns = os.get_terminal_size().columns
+  except OSError:
+    return
+  print(' ' * columns, end='\r')
 
 
 def print_divider() -> None:
   """Prints a dividing line as wide as the terminal."""
-  print('-' * os.get_terminal_size().columns)
+  try:
+    columns = os.get_terminal_size().columns
+  except OSError:
+    columns = 80
+  print('-' * columns)
 
 
 def print_color(message: str, color: str) -> None:
@@ -247,7 +255,11 @@ def print_progress(sentence: str, progress: int, out_of: int) -> None:
     print()
 
   sentence += f': {progress}/{out_of} '
-  num_remaining = os.get_terminal_size().columns - len(sentence) - 2
+  try:
+    columns = os.get_terminal_size().columns
+  except OSError:
+    columns = 80
+  num_remaining = columns - len(sentence) - 2
 
   if num_remaining >= 5:
     num_fill = int(float(progress / out_of) * num_remaining) or 1
@@ -312,7 +324,10 @@ def print_side_by_side(
 
     return padded_string
 
-  terminal_width = os.get_terminal_size().columns
+  try:
+    terminal_width = os.get_terminal_size().columns
+  except OSError:
+    terminal_width = 80
   per_column_width = (terminal_width - 3) // 2
   list1, list2 = [headers[0]] + list1, [headers[1]] + list2
 
