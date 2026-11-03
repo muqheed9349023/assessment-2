@@ -13,6 +13,8 @@
 # limitations under the License.
 """Shared configuration across main experimentation files."""
 
+import os
+
 from common import shared_config
 
 
@@ -31,8 +33,13 @@ from common import shared_config
 #     'none',  (turns off a side and returns an empty response)
 # ]
 ################################################################################
-side_1 = 'placeholder'
-side_2 = 'vanilla_prompting'
+demo_mode = os.environ.get('LONGFACT_DEMO', '').lower() in ('1', 'true', 'yes')
+side_1 = 'placeholder' if demo_mode else os.environ.get(
+    'LONGFACT_SIDE_1', 'placeholder'
+)
+side_2 = 'placeholder' if demo_mode else os.environ.get(
+    'LONGFACT_SIDE_2', 'vanilla_prompting'
+)
 parallelize = False
 save_results = True
 
@@ -77,9 +84,9 @@ show_responder_responses = False
 # ]
 # Old LongFact versions can be used by setting `task` to their directory.
 ################################################################################
-task_short = 'longfact_objects'
+task_short = os.environ.get('LONGFACT_TASK', 'longfact_objects')
 shuffle_data = True
-max_num_examples = 250
+max_num_examples = int(os.environ.get('LONGFACT_MAX_NUM_EXAMPLES', '250'))
 add_universal_postamble = True
 
 ################################################################################
@@ -101,7 +108,13 @@ response_length_postamble = (
 # responder_model: str = overridden by full model name.
 # task: Tuple[str, str, str] = overriden by model name and data fields.
 ################################################################################
-responder_model = shared_config.model_options[responder_model_short]
+responder_model = (
+    'unittest'
+    if demo_mode
+    else os.environ.get(
+        'LONGFACT_MODEL', shared_config.model_options[responder_model_short]
+    )
+)
 task = (
     shared_config.task_options[task_short]
     if task_short in shared_config.task_options
