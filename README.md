@@ -8,6 +8,31 @@ This repository contains:
 3. **F1@K**: Extending F1 score to long-form settings using recall from human-preferred length.
 4. **Experimentation pipeline** for benchmarking OpenAI and Anthropic models using LongFact + SAFE.
 
+## Fast Windows quick start
+
+This fork includes PowerShell launchers so you can get started without Conda or the full CUDA dependency set. Install [Git](https://git-scm.com/download/win) and [uv](https://docs.astral.sh/uv/getting-started/installation/) once, then run:
+
+```powershell
+git clone https://github.com/mohammedafnan8147/long-form-factuality.git
+cd long-form-factuality
+powershell -NoProfile -ExecutionPolicy Bypass -File .\setup.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File .\run.ps1
+```
+
+The default command runs a one-prompt local demo without API keys. For a live model response, copy `.env.example` to `.env`, add your OpenAI key, then run:
+
+```powershell
+.\run.ps1 -Mode generate -Examples 1
+```
+
+For SAFE evaluation, add both `OPENAI_API_KEY` and `SERPER_API_KEY` to `.env`, then pass the generation result JSON to:
+
+```powershell
+.\run.ps1 -Mode evaluate -ResultPath .\results\YOUR_GENERATION_FILE.json
+```
+
+SAFE's CPU-only NLP dependencies install the first time you choose `-Mode evaluate`. API runs can incur provider charges. Keep real keys in the ignored `.env` file; never commit them to GitHub. The default quick-start model is `gpt-4o-mini`; change `LONGFACT_MODEL` or `LONGFACT_SAFE_MODEL` in `.env` if your API account uses another model.
+
 ## Installation
 
 First, clone our GitHub repository.
