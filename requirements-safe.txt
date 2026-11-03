@@ -1,0 +1,7 @@
+# Additional CPU-only packages needed by SAFE fact extraction and evaluation.
+en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
+nltk==3.8.1
+numpy==1.26.3
+rank-bm25==0.2.2
+requests==2.31.0
+spacy==3.7.2

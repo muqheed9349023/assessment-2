@@ -1,0 +1,8 @@
+# Runtime for the demo and model response generation.
+# SAFE's NLP packages are installed only when you run evaluation.
+absl-py==2.1.0
+anthropic==0.16.0
+langfun==0.0.2.dev20240202
+openai==0.27.2
+pyglove==0.4.5.dev20240202
+termcolor==1.1.0
