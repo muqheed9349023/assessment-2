@@ -1,0 +1,11 @@
+{
+  "demo_mode": "True",
+  "task": "longfact_objects",
+  "per_prompt_data": [
+    {
+      "prompt": "What can you tell me about the Fermilab Tevatron Accelerator? Provide as many specific details and examples as possible (such as names of people, numbers, events, locations, dates, times, etc.)",
+      "side1_response": "[PLACEHOLDER RESPONSE]",
+      "side2_response": "[PLACEHOLDER RESPONSE]"
+    }
+  ]
+}
