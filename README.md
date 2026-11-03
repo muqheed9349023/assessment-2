@@ -19,7 +19,25 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\setup.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File .\run.ps1
 ```
 
-The default command runs a one-prompt local demo without API keys. For a live model response, copy `.env.example` to `.env`, add your OpenAI key, then run:
+
+
+The default command runs a one-prompt local demo without API keys. It returns placeholder responses. The complete sanitized sample is in [assessment-2.json](assessment-2.json). Example output:
+
+```json
+{
+  "demo_mode": "True",
+  "task": "longfact_objects",
+  "per_prompt_data": [
+    {
+      "prompt": "What can you tell me about the Fermilab Tevatron Accelerator? Provide as many specific details and examples as possible...",
+      "side1_response": "[PLACEHOLDER RESPONSE]",
+      "side2_response": "[PLACEHOLDER RESPONSE]"
+    }
+  ]
+}
+```
+
+For a live model response, copy `.env.example` to `.env`, add your OpenAI key, then run:
 
 ```powershell
 .\run.ps1 -Mode generate -Examples 1
