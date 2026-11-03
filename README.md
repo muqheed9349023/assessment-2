@@ -21,7 +21,19 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\run.ps1
 
 
 
-The default command runs a one-prompt local demo without API keys. It returns placeholder responses. The complete sanitized sample is in [assessment-2.json](assessment-2.json). Example output:
+The default command runs a one-prompt local demo without API keys. It returns placeholder responses. The complete sanitized sample is in [assessment-2.json](assessment-2.json). One-prompt console output (the responses are placeholders):
+
+```text
+Running the local no-API demo on 1 prompt(s)...
+INFO: Task used: longfact_objects.
+INFO: Number of prompts: 1.
+---PROMPT 1/1: What can you tell me about the Fermilab Tevatron Accelerator? ...---
+Side 1: placeholder | Side 2: placeholder
+[PLACEHOLDER RESPONSE] | [PLACEHOLDER RESPONSE]
+INFO: Saved final results to: results/<timestamp>.json
+```
+
+The saved JSON example is:
 
 ```json
 {
