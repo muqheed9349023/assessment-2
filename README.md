@@ -13,7 +13,7 @@ This repository contains:
 This fork includes PowerShell launchers so you can get started without Conda or the full CUDA dependency set. Install [Git](https://git-scm.com/download/win) and [uv](https://docs.astral.sh/uv/getting-started/installation/) once, then run:
 
 ```powershell
-git clone https://github.com/mohammedafnan8147/long-form-factuality.git
+git clone https://github.com/muqheed9349023/long-form-factuality.git
 cd long-form-factuality
 powershell -NoProfile -ExecutionPolicy Bypass -File .\setup.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File .\run.ps1
