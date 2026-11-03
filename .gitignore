@@ -3,6 +3,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Local quick-start environment and secrets
+.venv/
+.env
+.uv-cache/
+
 # Distribution / packaging
 .Python
 build/
@@ -22,3 +27,6 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+
+# Local run output
+results/
