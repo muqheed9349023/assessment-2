@@ -13,6 +13,8 @@
 # limitations under the License.
 """Shared configuration across SAFE files."""
 
+import os
+
 from common import shared_config
 
 
@@ -60,4 +62,6 @@ debug_safe = False
 #                         FORCED SETTINGS, DO NOT EDIT
 # model: str = overridden by full model name.
 ################################################################################
-model = shared_config.model_options[model_short]
+model = os.environ.get(
+    'LONGFACT_SAFE_MODEL', shared_config.model_options[model_short]
+)
